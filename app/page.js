@@ -1,101 +1,141 @@
-import Image from "next/image";
+"use client"; // Required for using React hooks and state
+
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [totalProjects, setTotalProjects] = useState(0);
+  const [totalFundsRaised, setTotalFundsRaised] = useState(0);
+  const [totalInvestors, setTotalInvestors] = useState(0);
+  const [successRate, setSuccessRate] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+  // Fetch statistics from your smart contract or backend
+  useEffect(() => {
+    const fetchStatistics = async () => {
+      // Replace with actual contract calls
+      setTotalProjects(100); // Example: getProjectsCount()
+      setTotalFundsRaised(500000); // Example: sum of all crowdfunded amounts
+      setTotalInvestors(250); // Example: getTotalInvestors()
+      setSuccessRate(75); // Example: calculate success rate
+    };
+    fetchStatistics();
+  }, []);
+
+  return (
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('./Home/home.jpg')" }}
+    >
+      {/* First Segment: Welcome Message and Statistics */}
+      <section id="welcome" className="h-screen flex flex-col items-center justify-center text-white relative">
+        {/* Overlay to darken the background */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Content */}
+        <div className="relative z-10 text-center">
+          {/* Welcome Message */}
+          <h1 className="text-6xl font-bold text-white text-shadow-lg mb-4">
+            Welcome to CF
+          </h1>
+
+          {/* Short Explanation Text */}
+          <p className="text-xl text-white mb-8">
+            A decentralized platform where creators bring their ideas to life and
+            investors earn rewards.
+          </p>
+
+          {/* Statistics */}
+          <div className="grid grid-cols-2 md:grid-cols-4">
+            <div className="bg-gray-800/90 border-y-2 border-r-1 border-gray-700 p-6 text-center">
+              <h2 className="text-5xl font-bold">{totalProjects}</h2>
+              <p className="text-gray-300">Total Projects Funded</p>
+            </div>
+            <div className="bg-gray-800/90 border-y-2 border-l border-gray-700 p-6 text-center">
+              <h2 className="text-5xl font-bold">${totalFundsRaised.toLocaleString()}</h2>
+              <p className="text-gray-300">Total Funds Raised</p>
+            </div>
+            <div className="bg-gray-800/90 border-y-2 border-x border-gray-700 p-6 text-center">
+              <h2 className="text-5xl font-bold">{totalInvestors}</h2>
+              <p className="text-gray-300">Total Investors</p>
+            </div>
+            <div className="bg-gray-800/90 border-y-2 border-l-1 border-gray-700 p-6 text-center">
+              <h2 className="text-5xl font-bold">{successRate}%</h2>
+              <p className="text-gray-300">Success Rate</p>
+            </div>
+          </div>
+
+          {/* Scroll Down Button */}
+          <a href="#get-started" className="mt-12 animate-bounce inline-block">
+            <svg
+              className="w-8 h-8 text-gray-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Second Segment: Create Project or Invest */}
+      <section id="get-started" className="h-screen flex flex-col items-center justify-center text-white relative">
+        {/* Overlay to darken the background */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Content */}
+        <div className="relative z-10 text-center">
+          <h2 className="text-6xl font-bold mb-8">Get Started</h2>
+          <p className="text-xl text-white mb-28">
+            Choose how you want to participate in the crowdfunding ecosystem.
+          </p>
+
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Create Project Card */}
+            <div className="bg-gray-800/90 border border-gray-800 p-8 rounded-lg text-center w-full md:w-1/2 hover:bg-gray-700 transition-colors relative">
+              {/* Logo for Create Project Card */}
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                <img
+                  src="/Home/create-project-logo.png" // Replace with your logo path
+                  alt="Create Project Logo"
+                  className="w-[72px] h-[72px]"
+                />
+              </div>
+              <h3 className="text-3xl font-bold mb-4 mt-8">Create a Project</h3>
+              <p className="text-gray-400 mb-6">
+                Bring your ideas to life by creating a new crowdfunding project.
+              </p>
+              <button className="bg-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Start Creating
+              </button>
+            </div>
+
+            {/* Invest in Projects Card */}
+            <div className="bg-gray-800/90 border border-gray-800 p-8 rounded-lg text-center w-full md:w-1/2 hover:bg-gray-700 transition-colors relative">
+              {/* Logo for Invest in Projects Card */}
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                <img
+                  src="/Home/invest-logo.png" // Replace with your logo path
+                  alt="Invest Logo"
+                  className="w-[72px] h-[72px]"
+                />
+              </div>
+              <h3 className="text-3xl font-bold mb-4 mt-8">Invest in Projects</h3>
+              <p className="text-gray-400 mb-6">
+                Support innovative projects and earn rewards as an investor.
+              </p>
+              <button className="bg-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                Start Investing
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

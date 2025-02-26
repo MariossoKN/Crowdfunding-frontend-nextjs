@@ -19,3 +19,17 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom font (if needed) */
+.font-geist-sans {
+  font-family: var(--font-geist-sans);
+}
+
+/* Custom text shadow (if Tailwind's text-shadow doesn't suffice) */
+.text-shadow-lg {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
