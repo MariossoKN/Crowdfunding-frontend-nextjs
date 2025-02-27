@@ -1,6 +1,7 @@
 "use client"; // Required for using React hooks and state
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [totalProjects, setTotalProjects] = useState(0);
@@ -12,10 +13,10 @@ export default function Home() {
   useEffect(() => {
     const fetchStatistics = async () => {
       // Replace with actual contract calls
-      setTotalProjects(100); // Example: getProjectsCount()
-      setTotalFundsRaised(500000); // Example: sum of all crowdfunded amounts
-      setTotalInvestors(250); // Example: getTotalInvestors()
-      setSuccessRate(75); // Example: calculate success rate
+      setTotalProjects(121); // Example: getProjectsCount()
+      setTotalFundsRaised(867); // Example: sum of all crowdfunded amounts
+      setTotalInvestors(185); // Example: getTotalInvestors()
+      setSuccessRate(76); // Example: calculate success rate
     };
     fetchStatistics();
   }, []);
@@ -33,12 +34,12 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 text-center">
           {/* Welcome Message */}
-          <h1 className="text-6xl font-bold text-white text-shadow-lg mb-4">
+          <h1 className="text-6xl font-bold text-white text-shadow-lg mb-8">
             Welcome to CF
           </h1>
 
           {/* Short Explanation Text */}
-          <p className="text-xl text-white mb-8">
+          <p className="text-xl text-white mb-24">
             A decentralized platform where creators bring their ideas to life and
             investors earn rewards.
           </p>
@@ -46,25 +47,25 @@ export default function Home() {
           {/* Statistics */}
           <div className="grid grid-cols-2 md:grid-cols-4">
             <div className="bg-gray-800/90 border-y-2 border-r-1 border-gray-700 p-6 text-center">
-              <h2 className="text-5xl font-bold">{totalProjects}</h2>
+              <h2 className="text-4xl font-bold">{totalProjects}</h2>
               <p className="text-gray-300">Total Projects Funded</p>
             </div>
             <div className="bg-gray-800/90 border-y-2 border-l border-gray-700 p-6 text-center">
-              <h2 className="text-5xl font-bold">${totalFundsRaised.toLocaleString()}</h2>
+              <h2 className="text-4xl font-bold">{totalFundsRaised.toLocaleString()} ETH</h2>
               <p className="text-gray-300">Total Funds Raised</p>
             </div>
             <div className="bg-gray-800/90 border-y-2 border-x border-gray-700 p-6 text-center">
-              <h2 className="text-5xl font-bold">{totalInvestors}</h2>
+              <h2 className="text-4xl font-bold">{totalInvestors}</h2>
               <p className="text-gray-300">Total Investors</p>
             </div>
             <div className="bg-gray-800/90 border-y-2 border-l-1 border-gray-700 p-6 text-center">
-              <h2 className="text-5xl font-bold">{successRate}%</h2>
+              <h2 className="text-4xl font-bold">{successRate}%</h2>
               <p className="text-gray-300">Success Rate</p>
             </div>
           </div>
 
           {/* Scroll Down Button */}
-          <a href="#get-started" className="mt-12 animate-bounce inline-block">
+          <a href="#get-started" className="mt-20 animate-bounce inline-block">
             <svg
               className="w-8 h-8 text-gray-300"
               fill="none"
@@ -91,15 +92,15 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 text-center">
           <h2 className="text-6xl font-bold mb-8">Get Started</h2>
-          <p className="text-xl text-white mb-28">
+          <p className="text-xl text-white mb-8">
             Choose how you want to participate in the crowdfunding ecosystem.
           </p>
 
           <div className="flex flex-col md:flex-row gap-8">
             {/* Create Project Card */}
-            <div className="bg-gray-800/90 border border-gray-800 p-8 rounded-lg text-center w-full md:w-1/2 hover:bg-gray-700 transition-colors relative">
+            <div className="bg-gray-800/90 border border-gray-800 p-8 rounded-lg text-center w-full md:w-1/2 hover:bg-gray-700/90 transition-colors relative group mt-24">
               {/* Logo for Create Project Card */}
-              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 transition-transform duration-300 group-hover:scale-110">
                 <img
                   src="/Home/create-project-logo.png" // Replace with your logo path
                   alt="Create Project Logo"
@@ -110,15 +111,17 @@ export default function Home() {
               <p className="text-gray-400 mb-6">
                 Bring your ideas to life by creating a new crowdfunding project.
               </p>
-              <button className="bg-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                Start Creating
-              </button>
+              <Link href="/create-project">
+                <button className="bg-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                  Start Creating
+                </button>
+              </Link>
             </div>
 
             {/* Invest in Projects Card */}
-            <div className="bg-gray-800/90 border border-gray-800 p-8 rounded-lg text-center w-full md:w-1/2 hover:bg-gray-700 transition-colors relative">
+            <div className="bg-gray-800/90 border border-gray-800 p-8 rounded-lg text-center w-full md:w-1/2 hover:bg-gray-700/90 transition-colors relative group mt-24">
               {/* Logo for Invest in Projects Card */}
-              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 transition-transform duration-300 group-hover:scale-110">
                 <img
                   src="/Home/invest-logo.png" // Replace with your logo path
                   alt="Invest Logo"
