@@ -12,7 +12,7 @@ export default function Header() {
     return (
         <>
             {/* Header */}
-            <header className="text-white bg-black/70 p-4 fixed top-0 left-0 w-full z-50 border-b border-gray-800">
+            <header className="text-white bg-black/80 p-4 fixed top-0 left-0 w-full z-50 border-b border-gray-800">
                 <div className="container mx-auto flex justify-between items-center">
                     {/* Logo */}
                     <div className="w-32">

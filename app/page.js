@@ -29,7 +29,7 @@ export default function Home() {
       {/* First Segment: Welcome Message and Statistics */}
       <section id="welcome" className="h-screen flex flex-col items-center justify-center text-white relative">
         {/* Overlay to darken the background */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
 
         {/* Content */}
         <div className="relative z-10 text-center">
@@ -87,7 +87,7 @@ export default function Home() {
       {/* Second Segment: Create Project or Invest */}
       <section id="get-started" className="h-screen flex flex-col items-center justify-center text-white relative">
         {/* Overlay to darken the background */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
 
         {/* Content */}
         <div className="relative z-10 text-center">
@@ -132,9 +132,11 @@ export default function Home() {
               <p className="text-gray-400 mb-6">
                 Support innovative projects and earn rewards as an investor.
               </p>
-              <button className="bg-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                Start Investing
-              </button>
+              <Link href="/invest-in-project">
+                <button className="bg-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                  Start Investing
+                </button>
+              </Link>
             </div>
           </div>
         </div>
